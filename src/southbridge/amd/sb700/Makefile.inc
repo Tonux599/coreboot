@@ -24,4 +24,8 @@ romstage-y += smbus.c
 romstage-y += ramtop.c
 ramstage-y += ramtop.c
 
+romstage-y += pmutil.c
+verstage-y += pmutil.c
+ramstage-y += pmutil.c
+
 endif
