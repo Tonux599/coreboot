@@ -99,4 +99,57 @@ config MAX_REBOOT_CNT
 	int
 	default 10
 
+#
+# VBOOT compatibility options
+#
+config GBB_FLAG_DISABLE_LID_SHUTDOWN
+	bool
+	default y if VBOOT
+
+config GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC
+	bool
+	default y if VBOOT
+
+config GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC
+	bool
+	default y if VBOOT
+
+config GBB_FLAG_DISABLE_FWMP
+	bool
+	default y if VBOOT
+
+config VBOOT_STARTS_IN_ROMSTAGE
+	bool
+	default y if VBOOT
+
+config VBOOT_NO_BOARD_SUPPORT
+	bool
+	default y if VBOOT
+
+config VBOOT_VBNV_CMOS
+	bool
+	default y if VBOOT
+
+config VBOOT_VBNV_OFFSET
+	hex
+	default 0x2f if VBOOT
+
+config FMDFILE
+	string
+	default "src/mainboard/$(CONFIG_MAINBOARD_DIR)/vboot-ro.fmd" if VBOOT
+
+config TPM1
+	bool
+	default y if VBOOT
+
+# TPM_RDRESP_NEED_DELAY is required for this
+# board or the TPM will occasionaly fail.
+config TPM_RDRESP_NEED_DELAY
+	bool
+	default y if TPM1
+
+config RTC
+	bool
+	default y if VBOOT
+
 endif # BOARD_ASUS_KGPE_D16
